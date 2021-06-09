@@ -1,0 +1,102 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{ ViewData["Title"] = "ویرایش  ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+ }
+
+<div class="content-wrapper" style="min-height: 805px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    @if (ViewData["IsDelete"] != null)
+                    {
+                        <h1>حذف نقش </h1>
+
+                    }
+                    else
+                    {
+                        <h1>ویرایش نقش </h1>
+
+                    }
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="/Admin">خانه</a></li>
+                        @if (ViewData["IsDelete"] != null)
+                        {
+                            <li class="breadcrumb-item active">حذف نقش  </li>
+
+                        }
+                        else
+                        {
+                            <li class="breadcrumb-item active">ویرایش نقش  </li>
+
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <form asp-action="Edit" asp-controller="Roles" asp-route-id="@Model.Id" asp-area="Admin" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">اطلاعات  جدید   </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <div role="form" asp-action="Create" asp-controller="Users" asp-area="Admin">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> عنوان  نقش </label>
+                                        <input type="text" asp-for="Name" class="form-control" id="exampleInputEmail1" placeholder="عنوان  نقش  را وارد کنید">
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+
+                                    </div>
+
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    @if (ViewData["IsDelete"] != null)
+                                    {
+                                        <a asp-action="Delete" asp-area="Admin" asp-controller="Roles" asp-route-id="@Model.Id" class="btn btn-danger">حذف </a>
+
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-success">ثبت </button>
+
+                                    }
+                                    <a asp-action="Index" asp-controller="Roles" asp-area="Admin" class="btn btn-primary">بازگشت  </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </form>
+
+
+</div>
+
