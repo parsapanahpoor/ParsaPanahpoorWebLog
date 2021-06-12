@@ -1,4 +1,5 @@
 ﻿using DataAccess.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,8 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace Presentation.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class UsersController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;

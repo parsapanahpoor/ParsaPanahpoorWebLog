@@ -65,7 +65,6 @@ namespace Presentation.Controllers
 
         #region Login
         [HttpGet]
-        [Route("/Login")]
         public IActionResult Login(string returnUrl = null)
         {
             if (_signInManager.IsSignedIn(User))
@@ -76,7 +75,6 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        [Route("/Login")]
 
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
@@ -113,8 +111,9 @@ namespace Presentation.Controllers
         #endregion
 
         #region LogOut
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
+        [Route("/LogOut")]
+
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
