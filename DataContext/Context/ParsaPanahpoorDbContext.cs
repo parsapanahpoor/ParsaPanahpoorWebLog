@@ -16,7 +16,7 @@ namespace DataContext.Context
 
         }
 
-        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Models.Entities.Blog.Blog> Blogs { get; set; }
 
 
 
