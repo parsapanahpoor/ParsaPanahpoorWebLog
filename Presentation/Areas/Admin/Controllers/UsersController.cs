@@ -82,22 +82,37 @@ namespace Presentation.Areas.Admin.Controllers
         {
             if (string.IsNullOrEmpty(id)) return NotFound();
             var user = await _userManager.FindByIdAsync(id);
+            EditUserInAdminPanel editUser = new EditUserInAdminPanel()
+            { 
+            
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                Password = user.PasswordHash,
+                UserName = user.UserName,
+                Id = user.Id
+            
+            
+            };
             if (user == null) return NotFound();
 
-            return View(user);
+            return View(editUser);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, string userName)
+        public async Task<IActionResult> Edit(string id, EditUserInAdminPanel userEdited)
         {
-            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(userName)) return NotFound();
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(userEdited.UserName)) return NotFound();
             var user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
-            user.UserName = userName;
+            user.UserName = userEdited.UserName;
+            user.PhoneNumber = userEdited.PhoneNumber;
+            user.Email = userEdited.Email;
+            user.PasswordHash = userEdited.Password;
             var result = await _userManager.UpdateAsync(user);
 
-            if (result.Succeeded) return RedirectToAction("index");
+            if (result.Succeeded) return Redirect("/Admin/Users/Index?Edit=true");
+
 
             foreach (var error in result.Errors)
             {

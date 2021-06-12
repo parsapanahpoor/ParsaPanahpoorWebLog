@@ -1,0 +1,113 @@
+﻿@model DataAccess.ViewModels.EditUserInAdminPanel
+@{ ViewData["Title"] = "ویرایش کاربران ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+<div class="content-wrapper" style="min-height: 805px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>ویرایش کاربر جدید</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="/Admin">خانه</a></li>
+                        <li class="breadcrumb-item active"> ویرایش کاربر   </li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <form asp-action="Edit" asp-controller="Users" asp-area="Admin" method="post" enctype="multipart/form-data">
+        <div style="color: darkred;" asp-validation-summary="ModelOnly"></div>
+
+        <input type="hidden" asp-for="Id" />
+        @*<input type="hidden" asp-for="AvatarName" />*@
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-7">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">اطلاعات کاربری  </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <div role="form" asp-action="Create" asp-controller="Users" asp-area="Admin">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> نام کاربری </label>
+                                        <input type="text" asp-for="UserName" readonly class="form-control" id="exampleInputEmail1" placeholder="نام کاربری  را وارد کنید">
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> شماره تلفن   </label>
+                                        <input type="text" asp-for="PhoneNumber" class="form-control" id="exampleInputEmail1" placeholder="شماره تلفن  را وارد کنید">
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">آدرس ایمیل</label>
+                                        <input type="email" asp-for="Email" class="form-control" id="exampleInputEmail1" placeholder="ایمیل را وارد کنید">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">پسورد </label>
+                                        <input type="password" asp-for="Password" class="form-control" id="exampleInputPassword1" placeholder="پسورد را وارد کنید">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+
+                                    </div>
+
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">تایید </button>
+                                    <a asp-action="Index" asp-controller="Users" asp-area="Admin" class="btn btn-primary">بازگشت</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </form>
+
+
+</div>
+
+@section Scripts
+{
+    <script>
+    function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#UserAvatar").change(function () {
+            readURL(this);
+        });</script>
+}
