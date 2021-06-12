@@ -162,23 +162,32 @@
                                                 {
                                                     <td><a href="/Admin/Users/LockUser?Userid=@item.UserId&&id=2" class="btn btn-danger btn-sm" style="color:white;">غیر فعال</a></td>
                                                 }*@
-                                                <td>
+                                            <td>
 
-                                                    <a class="btn btn-warning btn-sm waves-effect" asp-action="Edit" asp-area="Admin" asp-controller="Users" asp-route-id="@item.Id">
-                                                        <i class="glyphicon glyphicon-edit"></i>
-                                                        ویرایش
-                                                    </a>
+                                                <a class="btn btn-warning btn-sm waves-effect" asp-action="Edit" asp-area="Admin" asp-controller="Users" asp-route-id="@item.Id">
+                                                    <i class="glyphicon glyphicon-edit"></i>
+                                                    ویرایش
+                                                </a>
 
-                                                    <a class="btn btn-info btn-sm waves-effect" asp-action="Details" asp-area="Admin" asp-controller="Users" asp-route-id="@item.Id">
-                                                        <i class="glyphicon glyphicon-edit"></i>
-                                                        اطلاعات
-                                                    </a>
+                                                <a class="btn btn-info btn-sm waves-effect" href="/Admin/Users/Edit?Id=@item.Id&&Detail=true">
+                                                    <i class="glyphicon glyphicon-edit"></i>
+                                                    اطلاعات
+                                                </a>
 
-                                                    <a class="btn btn-danger btn-sm waves-effect" asp-action="Delete" asp-area="Admin" asp-controller="Users" asp-route-id="@item.Id">
-                                                        <i class="glyphicon glyphicon-trash"></i>
-                                                        حذف
-                                                    </a>
-                                                </td>
+                                                <a class="btn btn-danger btn-sm waves-effect" asp-action="Delete" asp-area="Admin" asp-controller="Users" asp-route-id="@item.Id">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                    حذف
+                                                </a>
+
+                                                <a class="btn btn-warning btn-sm waves-effect" asp-controller="Users" asp-action="AddUserToRole" asp-route-id="@item.Id" asp-area="Admin">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                    افزودن  دسترسی
+                                                </a>
+                                                <a class="btn btn-danger btn-sm waves-effect" asp-controller="Users" asp-action="RemoveUserFromRole" asp-route-id="@item.Id" asp-area="Admin">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                    حذف دسترسی
+                                                </a>
+                                            </td>
                                             </tr>
                                         }
                                     </tbody>

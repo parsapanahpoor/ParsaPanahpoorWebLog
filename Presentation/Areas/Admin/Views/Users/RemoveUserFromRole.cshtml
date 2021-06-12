@@ -1,0 +1,103 @@
+﻿@model DataAccess.ViewModels.AddUserToRoleViewModel
+@{ ViewData["Title"] = "ویرایش کاربران ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+<div class="content-wrapper" style="min-height: 805px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>تایین دسترسی برای کاربر </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="/Admin">خانه</a></li>
+                        <li class="breadcrumb-item active"> تایین دسترسی برای کاربر   </li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <form asp-action="RemoveUserFromRole" asp-controller="Users" asp-area="Admin" method="post" enctype="multipart/form-data">
+        <div style="color: darkred;" asp-validation-summary="ModelOnly"></div>
+
+        <input type="hidden" asp-for="UserId" />
+        @*<input type="hidden" asp-for="AvatarName" />*@
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- Horizontal Form -->
+
+
+                        <div class="card card-warning">
+                            <div class="card-header">
+                                <h3 class="card-title">  نقش ها   </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <div class="form-horizontal">
+
+                                <div class="form-group">
+                                    <div class="form-check">
+
+                                        @for (int i = 0; i < Model.UserRoles.Count; i++)
+                                        {
+                                        <br />
+                                        <input class="form-check-input" type="checkbox" asp-for="@Model.UserRoles[i].IsSelected" />
+                                        <label class="form-check-label" style="margin-right: 30px;">@Model.UserRoles[i].RoleName</label>
+
+                                        <input type="hidden" asp-for="@Model.UserRoles[i].RoleName" />
+                                        }
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-danger">حذف </button>
+                                        <a asp-action="Index" asp-controller="Users" asp-area="Admin" class="btn btn-primary">بازگشت  </a>
+                                    </div>
+
+                                </div>                            <!-- /.card-footer -->
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                        <!-- general form elements disabled -->
+                        <!-- /.card -->
+
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+    </form>
+
+
+</div>
+
+@section Scripts
+{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#UserAvatar").change(function () {
+            readURL(this);
+        });</script>
+}

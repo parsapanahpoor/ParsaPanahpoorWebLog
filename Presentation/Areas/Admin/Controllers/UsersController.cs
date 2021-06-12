@@ -38,10 +38,7 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
 
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+  
 
         public ActionResult Create()
         {
@@ -72,13 +69,13 @@ namespace Presentation.Areas.Admin.Controllers
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
-                }
+                } 
 
             }
             return View(model);
         }
 
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(string id , bool Detail = false )
         {
             if (string.IsNullOrEmpty(id)) return NotFound();
             var user = await _userManager.FindByIdAsync(id);
@@ -94,6 +91,14 @@ namespace Presentation.Areas.Admin.Controllers
             
             };
             if (user == null) return NotFound();
+      
+
+            if (Detail == true)
+            {
+
+                ViewData["Detail"] = true;
+
+            }
 
             return View(editUser);
         }
@@ -143,8 +148,97 @@ namespace Presentation.Areas.Admin.Controllers
         #endregion
 
         #region RolesManager
+        [Area("Admin")]
 
+        [HttpGet]
+        public async Task<IActionResult> AddUserToRole(string id)
+        {
+            if (string.IsNullOrEmpty(id)) return NotFound();
 
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+            var roles = _roleManager.Roles.ToList();
+            var model = new AddUserToRoleViewModel() { UserId = id };
+
+            foreach (var role in roles)
+            {
+                if (!await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    model.UserRoles.Add(new UserRolesViewModel()
+                    {
+                        RoleName = role.Name
+                    });
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddUserToRole(AddUserToRoleViewModel model)
+        {
+            if (model == null) return NotFound();
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null) return NotFound();
+            var requestRoles = model.UserRoles.Where(r => r.IsSelected)
+                .Select(u => u.RoleName)
+                .ToList();
+            var result = await _userManager.AddToRolesAsync(user, requestRoles);
+
+            if (result.Succeeded) return RedirectToAction("index");
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RemoveUserFromRole(string id)
+        {
+            if (string.IsNullOrEmpty(id)) return NotFound();
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+            var roles = _roleManager.Roles.ToList();
+            var model = new AddUserToRoleViewModel() { UserId = id };
+
+            foreach (var role in roles)
+            {
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    model.UserRoles.Add(new UserRolesViewModel()
+                    {
+                        RoleName = role.Name
+                    });
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveUserFromRole(AddUserToRoleViewModel model)
+        {
+            if (model == null) return NotFound();
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null) return NotFound();
+            var requestRoles = model.UserRoles.Where(r => r.IsSelected)
+                .Select(u => u.RoleName)
+                .ToList();
+            var result = await _userManager.RemoveFromRolesAsync(user, requestRoles);
+
+            if (result.Succeeded) return RedirectToAction("index");
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
+        }
 
         #endregion
     }
