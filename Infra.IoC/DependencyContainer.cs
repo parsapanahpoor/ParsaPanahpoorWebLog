@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DataAccess.Design_Pattern.UnitOfWork;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,8 @@ namespace Infra.IoC
 
 
             //service.AddTransient<UnitOfWork<ParsaPanahpoorDBContext>>();
+            service.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
         }
     }

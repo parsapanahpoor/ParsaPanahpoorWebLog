@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Design_Pattern.Repositories.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
 
         #region Repositories
 
+        BlogCategoryRepository BlogCategory { get; }
 
 
         #endregion

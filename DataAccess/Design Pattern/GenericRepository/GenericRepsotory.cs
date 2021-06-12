@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DataAccess.Design_Pattern.GenericRepository
 {
-    class GenericRepsotory<TEntity> : IGenericRepository<TEntity> where TEntity : class
+  public class GenericRepsotory<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         protected readonly ParsaPanahpoorDbContext context;
         internal DbSet<TEntity> dbSet;

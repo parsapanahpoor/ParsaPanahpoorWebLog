@@ -1,4 +1,5 @@
-﻿using DataContext.Context;
+﻿using DataAccess.Design_Pattern.Repositories.Classes;
+using DataContext.Context;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,31 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         public UnitOfWork(ParsaPanahpoorDbContext db)
         {
             _db = db;
+            BlogCategory = new BlogCategoryRepository(_db);
         }
+
+
+        #region Repositories
+
+
+        public BlogCategoryRepository BlogCategory { get; private set; }
+
+        #endregion
+
+
+        #region Implement
+
+        public void SaveChangesDB()
+        {
+            _db.SaveChanges();
+        }
+
+        public Task<int> SaveChangesDBAsync()
+        {
+            return _db.SaveChangesAsync();
+        }
+
+        #endregion
 
         #region Dispose
 
@@ -39,19 +64,5 @@ namespace DataAccess.Design_Pattern.UnitOfWork
 
         #endregion
 
-
-        #region Implement
-
-        public void SaveChangesDB()
-        {
-            _db.SaveChanges();
-        }
-
-        public Task<int> SaveChangesDBAsync()
-        {
-            return _db.SaveChangesAsync();
-        }
-
-        #endregion
     }
 }

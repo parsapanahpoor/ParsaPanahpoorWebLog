@@ -16,8 +16,13 @@ namespace DataContext.Context
 
         }
 
-        public DbSet<Models.Entities.Blog.Blog> Blogs { get; set; }
+        #region Blog
+       public DbSet<Models.Entities.Blog.Blog> Blogs { get; set; }
+        public DbSet<Models.Entities.Blog.BlogCategory> blogCategories { get; set; }
+        public DbSet<Models.Entities.Blog.BlogSelectedCategory> blogSelectedCategories { get; set; }
 
+        #endregion
+ 
 
 
 
