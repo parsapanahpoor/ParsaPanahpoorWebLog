@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models.Entities;
+using Models.Entities.AboutMe;
 using Models.Entities.Sldier;
 using Models.Entities.User;
 using System;
@@ -32,6 +33,12 @@ namespace DataContext.Context
 
         #endregion
 
+        #region AboutMe
+
+        public DbSet<AboutMe> AboutMes { get; set; }
+        public DbSet<Abilities> abilities { get; set; }
+
+        #endregion
 
         #region OnModelCreating
         protected override void OnModelCreating(ModelBuilder modelBuilder)

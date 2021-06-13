@@ -13,6 +13,8 @@ namespace DataAccess.Design_Pattern.UnitOfWork
 
         BlogCategoryRepository BlogCategory { get; }
         SliderRepository sliderRepository { get; }
+        AboutMeRepository aboutMeRepository { get; }
+        AbilitiesRepository abilitiesRepository { get; }
 
 
 
