@@ -61,6 +61,12 @@
                             <a class="nav-link js-scroll" href="/register">وارد شوید </a>
                         </li>
                     }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll" href="/Admin/Home/Index">پنل ادمین  </a>
+                        </li>
+                    }
 
                     <li class="nav-item">
                         <a class="nav-link js-scroll" href="#contact">تماس با من</a>

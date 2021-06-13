@@ -101,7 +101,6 @@ namespace Presentation.Areas.Admin.Controllers
 
                 PhoneNumber = user.PhoneNumber,
                 Email = user.Email,
-                Password = user.PasswordHash,
                 UserName = user.UserName,
                 Id = user.Id,
                 AvatarName = user.UserAvatar
@@ -137,7 +136,6 @@ namespace Presentation.Areas.Admin.Controllers
             user.UserName = userEdited.UserName;
             user.PhoneNumber = userEdited.PhoneNumber;
             user.Email = userEdited.Email;
-            user.PasswordHash = userEdited.Password;
 
             if (userEdited.UserAvatar != null)
             {

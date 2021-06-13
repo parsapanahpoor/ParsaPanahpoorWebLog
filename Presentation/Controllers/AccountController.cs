@@ -43,6 +43,7 @@ namespace Presentation.Controllers
                 var user = new User()
                 {
                     UserName = model.UserName,
+                    PhoneNumber = model.PhoneNumber,
                     Email = model.Email,
                     EmailConfirmed = true,
                     RegisterDate = DateTime.Now,
@@ -91,11 +92,8 @@ namespace Presentation.Controllers
             {
                 var user = await _userManager.FindByNameAsync(model.UserName);
 
-                if (user.IsActive == false)
-                {
-                    ModelState.AddModelError("", "حساب کاربری شما مسدود می باشد ");
-                    return View(model);
-                }
+               
+         
             
 
                 var result = await _signInManager.PasswordSignInAsync(
