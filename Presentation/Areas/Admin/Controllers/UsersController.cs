@@ -1,4 +1,5 @@
-﻿using DataAccess.ViewModels;
+﻿using DataAccess.Design_Pattern.UnitOfWork;
+using DataAccess.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -6,9 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Models.Entities.User;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Utilities.Genarator;
 
 namespace Presentation.Areas.Admin.Controllers
 {
@@ -19,11 +21,14 @@ namespace Presentation.Areas.Admin.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUnitOfWork _context;
 
-        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+
+        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager , IUnitOfWork context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _context = context;
         }
 
         #region UsersManager
@@ -92,7 +97,9 @@ namespace Presentation.Areas.Admin.Controllers
                 Email = user.Email,
                 Password = user.PasswordHash,
                 UserName = user.UserName,
-                Id = user.Id
+                Id = user.Id, 
+                AvatarName = user.UserAvatar
+                
             
             
             };
@@ -120,6 +127,20 @@ namespace Presentation.Areas.Admin.Controllers
             user.PhoneNumber = userEdited.PhoneNumber;
             user.Email = userEdited.Email;
             user.PasswordHash = userEdited.Password;
+
+            if (userEdited.UserAvatar != null)
+            {
+              
+               
+                user.UserAvatar = NameGenerator.GenerateUniqCode() + Path.GetExtension(userEdited.UserAvatar.FileName);
+                string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/UserAvatar", user.UserAvatar);
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    userEdited.UserAvatar.CopyTo(stream);
+                }
+            }
+
+
             var result = await _userManager.UpdateAsync(user);
 
             if (result.Succeeded) return Redirect("/Admin/Users/Index?Edit=true");
@@ -151,6 +172,26 @@ namespace Presentation.Areas.Admin.Controllers
                 return View();
             }
         }
+
+        public async Task< IActionResult> LockUser(string Userid , int id )
+        {
+            var user = await _userManager.FindByIdAsync(Userid);
+
+            if (id == 1)
+            {
+                user.IsActive = false;
+
+            }
+            if (id == 2)
+            {
+                user.IsActive = true;
+
+            }
+            var result =    await _userManager.UpdateAsync(user);
+            return RedirectToAction(nameof(Index));
+        }
+
+
         #endregion
 
         #region RolesManager
