@@ -76,6 +76,14 @@
                                         <a asp-action="Index" asp-controller="Users" asp-area="Admin" class="btn btn-primary">بازگشت</a>
 
                                     }
+                                    @if (ViewData["Delete"] != null)
+                                    {
+
+                                        <a asp-route-id="@Model.Id" asp-action="Delete" asp-controller="Users" asp-area="Admin" class="btn btn-danger">حذف</a>
+
+                                        <a asp-action="Index" asp-controller="Users" asp-area="Admin" class="btn btn-primary">بازگشت</a>
+
+                                    }
                                     else
                                     {
                                         <button type="submit" class="btn btn-success">تایید </button>

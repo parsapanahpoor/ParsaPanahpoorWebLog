@@ -4,6 +4,7 @@ using Models.Entities;
 using Models.Entities.User;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataContext.Context
@@ -23,8 +24,31 @@ namespace DataContext.Context
         public DbSet<Models.Entities.Blog.BlogSelectedCategory> blogSelectedCategories { get; set; }
 
         #endregion
- 
 
+
+        #region OnModelCreating
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            var cascadeFKs = modelBuilder.Model.GetEntityTypes()
+                .SelectMany(t => t.GetForeignKeys())
+                .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
+
+            foreach (var fk in cascadeFKs)
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
+
+
+
+            modelBuilder.Entity<User>()
+                .HasQueryFilter(u => !u.IsDelete);
+
+            
+
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        #endregion
 
 
     }

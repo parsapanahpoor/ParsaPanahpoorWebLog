@@ -24,7 +24,7 @@ namespace Presentation.Areas.Admin.Controllers
         private readonly IUnitOfWork _context;
 
 
-        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager , IUnitOfWork context)
+        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IUnitOfWork context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -42,14 +42,20 @@ namespace Presentation.Areas.Admin.Controllers
 
             var model = _userManager.Users
                         .Select(u => new IndexViewModel()
-                        { Id = u.Id, UserName = u.UserName, Email = u.Email , UserAvatar = u.UserAvatar
-                            , PhoneNumber = u.PhoneNumber , IsActive = u.IsActive
+                        {
+                            Id = u.Id,
+                            UserName = u.UserName,
+                            Email = u.Email,
+                            UserAvatar = u.UserAvatar
+                            ,
+                            PhoneNumber = u.PhoneNumber,
+                            IsActive = u.IsActive
                         }).ToList();
             return View(model);
         }
 
 
-  
+
 
         public ActionResult Create()
         {
@@ -80,31 +86,31 @@ namespace Presentation.Areas.Admin.Controllers
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
-                } 
+                }
 
             }
             return View(model);
         }
 
-        public async Task<ActionResult> Edit(string id , bool Detail = false )
+        public async Task<ActionResult> Edit(string id, bool Detail = false, bool Delete = false)
         {
             if (string.IsNullOrEmpty(id)) return NotFound();
             var user = await _userManager.FindByIdAsync(id);
             EditUserInAdminPanel editUser = new EditUserInAdminPanel()
-            { 
-            
+            {
+
                 PhoneNumber = user.PhoneNumber,
                 Email = user.Email,
                 Password = user.PasswordHash,
                 UserName = user.UserName,
-                Id = user.Id, 
+                Id = user.Id,
                 AvatarName = user.UserAvatar
-                
-            
-            
+
+
+
             };
             if (user == null) return NotFound();
-      
+
 
             if (Detail == true)
             {
@@ -112,7 +118,12 @@ namespace Presentation.Areas.Admin.Controllers
                 ViewData["Detail"] = true;
 
             }
+            if (Delete == true)
+            {
 
+                ViewData["Delete"] = true;
+
+            }
             return View(editUser);
         }
 
@@ -130,8 +141,8 @@ namespace Presentation.Areas.Admin.Controllers
 
             if (userEdited.UserAvatar != null)
             {
-              
-               
+
+
                 user.UserAvatar = NameGenerator.GenerateUniqCode() + Path.GetExtension(userEdited.UserAvatar.FileName);
                 string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/UserAvatar", user.UserAvatar);
                 using (var stream = new FileStream(imagePath, FileMode.Create))
@@ -154,26 +165,21 @@ namespace Presentation.Areas.Admin.Controllers
             return View(user);
         }
 
-        public ActionResult Delete(int id)
+
+
+
+        public async Task<IActionResult> Delete(string id)
         {
-            return View();
+            var user = await _userManager.FindByIdAsync(id);
+
+            user.IsDelete = true;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            return Redirect("/Admin/Users/Index?Delete=true");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        public async Task< IActionResult> LockUser(string Userid , int id )
+        public async Task<IActionResult> LockUser(string Userid, int id)
         {
             var user = await _userManager.FindByIdAsync(Userid);
 
@@ -187,7 +193,7 @@ namespace Presentation.Areas.Admin.Controllers
                 user.IsActive = true;
 
             }
-            var result =    await _userManager.UpdateAsync(user);
+            var result = await _userManager.UpdateAsync(user);
             return RedirectToAction(nameof(Index));
         }
 
