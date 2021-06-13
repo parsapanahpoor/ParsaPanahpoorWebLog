@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models.Entities;
+using Models.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataContext.Context
 {
-   public class ParsaPanahpoorDbContext : IdentityDbContext
+   public class ParsaPanahpoorDbContext : IdentityDbContext<User>
     {
 
         public ParsaPanahpoorDbContext(DbContextOptions<ParsaPanahpoorDbContext> options)

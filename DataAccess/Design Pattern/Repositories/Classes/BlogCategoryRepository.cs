@@ -19,9 +19,43 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
             _db = db;
         }
 
+        public void AddBlogCategory(BlogCategory blogCategory)
+        {
+            BlogCategory blog = new BlogCategory()
+            { 
+                ParentId = blogCategory.ParentId,
+                CategoryTitle = blogCategory.CategoryTitle,
+                IsDelete = false,
+
+            
+            
+            };
+
+
+            Add(blog);
+            _db.SaveChanges();
+        }
+
         public List<BlogCategory> GetAllBlogCategories()
         {
             return GetAll().ToList();
+        }
+
+        public BlogCategory GetBlogCategoryById(int id)
+        {
+            return GetById(id);
+        }
+
+        public void UpdateBlogCategroy(BlogCategory blogCategory , int id )
+        {
+            var category = GetBlogCategoryById(id);
+
+            category.CategoryTitle = blogCategory.CategoryTitle;
+
+            Update(category);
+            _db.SaveChanges();
+
+            
         }
     }
 }

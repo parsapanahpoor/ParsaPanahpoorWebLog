@@ -1,6 +1,7 @@
 ﻿using DataAccess.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Models.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace Presentation.Controllers
     {
 
         #region Constructor
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<User> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager,
+        public AccountController(UserManager<User> userManager,
             SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
@@ -39,7 +40,7 @@ namespace Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser()
+                var user = new User()
                 {
                     UserName = model.UserName,
                     Email = model.Email,

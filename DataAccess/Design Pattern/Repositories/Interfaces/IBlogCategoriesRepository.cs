@@ -10,7 +10,9 @@ namespace DataAccess.Design_Pattern.Repositories.Interfaces
     {
 
         List<BlogCategory> GetAllBlogCategories();
-
+        void AddBlogCategory(BlogCategory blogCategory);
+        BlogCategory GetBlogCategoryById(int id );
+        void UpdateBlogCategroy(BlogCategory blogCategory , int id);
 
     }
 }

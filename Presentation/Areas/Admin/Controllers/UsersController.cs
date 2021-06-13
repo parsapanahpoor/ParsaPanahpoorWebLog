@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Models.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,10 @@ namespace Presentation.Areas.Admin.Controllers
 
     public class UsersController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsersController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -54,7 +55,7 @@ namespace Presentation.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser()
+                var user = new User()
                 {
                     UserName = model.UserName,
                     Email = model.Email,
