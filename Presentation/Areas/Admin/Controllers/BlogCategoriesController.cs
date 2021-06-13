@@ -48,6 +48,7 @@ namespace Presentation.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _context.BlogCategory.AddBlogCategory(blogCategory);
+                _context.SaveChangesDB();
                 return Redirect("/Admin/BlogCategories/Index?Create=true");
 
 

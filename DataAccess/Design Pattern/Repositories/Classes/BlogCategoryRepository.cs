@@ -33,7 +33,6 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
 
 
             Add(blog);
-            _db.SaveChanges();
         }
 
         public List<BlogCategory> GetAllBlogCategories()
