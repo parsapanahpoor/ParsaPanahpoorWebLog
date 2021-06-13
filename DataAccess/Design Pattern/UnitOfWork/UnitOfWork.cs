@@ -14,6 +14,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         {
             _db = db;
             BlogCategory = new BlogCategoryRepository(_db);
+            sliderRepository = new SliderRepository(_db);
         }
 
 
@@ -21,6 +22,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
 
 
         public BlogCategoryRepository BlogCategory { get; private set; }
+        public SliderRepository sliderRepository { get; private set; }
 
         #endregion
 

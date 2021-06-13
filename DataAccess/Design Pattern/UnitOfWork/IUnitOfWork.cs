@@ -12,6 +12,8 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         #region Repositories
 
         BlogCategoryRepository BlogCategory { get; }
+        SliderRepository sliderRepository { get; }
+
 
 
         #endregion
