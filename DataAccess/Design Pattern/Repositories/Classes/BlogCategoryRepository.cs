@@ -52,7 +52,6 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
             category.CategoryTitle = blogCategory.CategoryTitle;
 
             Update(category);
-            _db.SaveChanges();
 
             
         }

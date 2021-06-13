@@ -44,14 +44,40 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                 imgResizer.Image_resize(imagePath, thumbPath, 150);
             }
 
-            _db.Add(slider);
+            Add(slider);
+                
 
+        }
+
+        public void DeleteSldier(Slider slider)
+        {
+            Delete(slider);
+
+            if (slider.SliderImageName != "no-photo.png")
+            {
+                string deleteimagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Slider", slider.SliderImageName);
+                if (File.Exists(deleteimagePath))
+                {
+                    File.Delete(deleteimagePath);
+                }
+
+                string deletethumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Slider/Thumb", slider.SliderImageName);
+                if (File.Exists(deletethumbPath))
+                {
+                    File.Delete(deletethumbPath);
+                }
+            }
 
         }
 
         public List<Slider> GetAllSliders()
         {
             return GetAll().ToList();
+        }
+
+        public Slider GetSldierForShow()
+        {
+            return GetFirstOrDefault();
         }
 
         public Slider GetSliderById(int id)
@@ -95,7 +121,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                 imgResizer.Image_resize(imagePath, thumbPath, 150);
             }
 
-            _db.Update(slider);
+            Update(slider);
         }
     }
 }

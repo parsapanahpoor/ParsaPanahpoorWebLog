@@ -84,7 +84,7 @@ namespace Presentation.Areas.Admin.Controllers
             {
 
                 _context.BlogCategory.UpdateBlogCategroy(blogCategory, id);
-
+                _context.SaveChangesDB();
 
                 return Redirect("/Admin/BlogCategories/Index?Edit=true");
             }

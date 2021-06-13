@@ -1,6 +1,6 @@
 ﻿@model Models.Entities.Sldier.Slider
 @{ ViewData["Title"] = "ویرایش اسلایدر ";
-                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
 
 
 <div class="content-wrapper" style="min-height: 805px;">
@@ -24,7 +24,7 @@
 
         <input type="hidden" asp-for="SliderId" />
         <input type="hidden" asp-for="SliderImageName" />
-  
+
 
 
         <section class="content">
@@ -41,7 +41,7 @@
                             <!-- form start -->
                             <div role="form" asp-action="Create" asp-controller="Users" asp-area="Admin">
                                 <div class="card-body">
-                          
+
                                     <div class="form-group">
                                         <label for="exampleInputEmail1"> متن      </label>
                                         <input type="text" asp-for="SliderText" class="form-control" id="exampleInputEmail1" placeholder="لینک تصویر    را وارد کنید">
@@ -54,11 +54,23 @@
 
                                 </div>
                                 <!-- /.card-body -->
-
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success">ارسال</button>
+
+                                    @if (ViewData["Delete"] != null)
+                                    {
+
+
+                                <a class="btn btn-danger" href="/Admin/Sliders/Delete/@Model.SliderId">حذف</a>}
+                                    else
+                                    {
+                                    <button type="submit" class="btn btn-info" >ویرایش </button>
+
+                                    }
+
                                     <a asp-action="Index" asp-controller="Sliders" asp-area="Admin" class="btn btn-primary">بازگشت به عقب </a>
                                 </div>
+
+
                             </div>
                         </div>
 
@@ -111,7 +123,8 @@
 
 @section Scripts
 {
-    <script>function readURL(input) {
+    <script>
+        function readURL(input) {
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

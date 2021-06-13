@@ -1,4 +1,4 @@
-﻿
+﻿@model Models.Entities.Sldier.Slider
 @{
     Layout = null;
 }
@@ -39,12 +39,10 @@
             <div class="background">
                 <div class="video-container">
                     <div class="filter"></div>
-                    <video poster="images/poster.jpg" id="bgvid" playsinline autoplay muted loop>
-                        <source src="images/video.mp4" type="video/mp4" />Your browser does not support the video tag. I
+                    <img src="~/Images/Slider/@Model.SliderImageName" style="height:100%; width:100%;" id="bgvid" playsinline autoplay muted loop/>
+                        @*<source src="images/video.mp4" type="video/mp4" />Your browser does not support the video tag. I
                         suggest you upgrade your browser.
-                        <source src="images/video.webm" type="video/webm" />Your browser does not support the video tag.
-                        I suggest you upgrade your browser.
-                    </video>
+                        <source src="images/video.webm" type="video/webm" />Your browser does not support the video tag.*@
                 </div>
             </div>
 
@@ -60,11 +58,11 @@
                 </div><!-- // end .lines -->
                 <div class="container">
                     <div class="center-content text-light align-self-center">
-                        <img src="/WellcomePage/images/freedom.png" class="img-fluid" alt="Parsa Panahpoor" data-aos="fade"
+                        <img src="/WellcomePage/images/freedom.png" style="height:50%; width:50%;" class="img-fluid" alt="Parsa Panahpoor" data-aos="fade"
                              data-aos-delay="1800" />
                         <p class="lead my-4" data-aos="fade" data-aos-delay="2500">
-                            We are cooking something really
-                            awesome stuff. Hold your breath and wait for the royal launch
+
+                          @Model.SliderText
                         </p>
                         <!-- // end .lead -->
                         <span class="animation anim-light" data-aos="slide-effect-btn" data-aos-delay="3000">

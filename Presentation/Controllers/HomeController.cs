@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.Design_Pattern.UnitOfWork;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Presentation.Models;
 using System;
@@ -12,16 +13,19 @@ namespace ParsaPanahpoor.WebSite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger , IUnitOfWork context)
         {
             _logger = logger;
+            _context = context;
         }
 
         //Welcome Page
         public IActionResult Index()
         {
-            return View();
+            var sliders = _context.sliderRepository.GetSldierForShow();
+            return View(sliders);
         }
 
 

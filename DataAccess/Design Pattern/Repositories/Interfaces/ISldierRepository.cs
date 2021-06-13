@@ -13,7 +13,9 @@ namespace DataAccess.Design_Pattern.Repositories.Interfaces
         List<Slider> GetAllSliders();
         void AddSlider(Slider slider , IFormFile imgBlogUp);
         Slider GetSliderById(int id );
-        void UpdateSlider(Slider slider, IFormFile imgBlogUp); 
+        void UpdateSlider(Slider slider, IFormFile imgBlogUp);
+        void DeleteSldier(Slider slider);
+        Slider GetSldierForShow();
 
     }
 }
