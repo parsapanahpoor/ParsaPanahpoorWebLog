@@ -14,10 +14,10 @@ namespace Presentation.Controllers
 
         #region Constructor
         private readonly UserManager<User> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<User> _signInManager;
 
         public AccountController(UserManager<User> userManager,
-            SignInManager<IdentityUser> signInManager)
+            SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -44,7 +44,11 @@ namespace Presentation.Controllers
                 {
                     UserName = model.UserName,
                     Email = model.Email,
-                    EmailConfirmed = true
+                    EmailConfirmed = true,
+                    RegisterDate = DateTime.Now,
+                    UserAvatar = "Defult.jpg",
+                    IsActive = true,
+                    IsDelete = false
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -85,8 +89,19 @@ namespace Presentation.Controllers
 
             if (ModelState.IsValid)
             {
+                var user = await _userManager.FindByNameAsync(model.UserName);
+
+                if (user.IsActive == false)
+                {
+                    ModelState.AddModelError("", "حساب کاربری شما مسدود می باشد ");
+                    return View(model);
+                }
+            
+
                 var result = await _signInManager.PasswordSignInAsync(
                     model.UserName, model.Password, model.RememberMe, true);
+
+
 
                 if (result.Succeeded)
                 {

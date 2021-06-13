@@ -150,18 +150,18 @@
                                         {
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">
-                                                    @*<img class="direct-chat-img" style="width:50px;height:50px;" src="/Images/UserAvatar/@item.UserAvatar" alt="message user image">*@
+                                                    <img class="direct-chat-img" style="width:50px;height:50px;" src="/Images/UserAvatar/@item.UserAvatar" alt="message user image">
                                                 </td>
                                                 <td>@item.UserName</td>
-                                                <td></td>
-                                                @*@if (item.IsActive)
+                                                <td>@item.PhoneNumber</td>
+                                                @if (item.IsActive)
                                                 {
-                                                    <td><a href="/Admin/Users/LockUser?Userid=@item.UserId&&id=1" class="btn btn-success btn-sm" style="color:white;">فعال</a></td>
+                                                    <td><a href="/Admin/Users/LockUser?Userid=@item.Id&&id=1" class="btn btn-success btn-sm" style="color:white;">فعال</a></td>
                                                 }
                                                 @if (!item.IsActive)
                                                 {
-                                                    <td><a href="/Admin/Users/LockUser?Userid=@item.UserId&&id=2" class="btn btn-danger btn-sm" style="color:white;">غیر فعال</a></td>
-                                                }*@
+                                                    <td><a href="/Admin/Users/LockUser?Userid=@item.Id&&id=2" class="btn btn-danger btn-sm" style="color:white;">غیر فعال</a></td>
+                                                }
                                             <td>
 
                                                 <a class="btn btn-warning btn-sm waves-effect" asp-action="Edit" asp-area="Admin" asp-controller="Users" asp-route-id="@item.Id">

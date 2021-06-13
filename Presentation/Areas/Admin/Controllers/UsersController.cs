@@ -37,7 +37,9 @@ namespace Presentation.Areas.Admin.Controllers
 
             var model = _userManager.Users
                         .Select(u => new IndexViewModel()
-                        { Id = u.Id, UserName = u.UserName, Email = u.Email }).ToList();
+                        { Id = u.Id, UserName = u.UserName, Email = u.Email , UserAvatar = u.UserAvatar
+                            , PhoneNumber = u.PhoneNumber , IsActive = u.IsActive
+                        }).ToList();
             return View(model);
         }
 
