@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models.Entities;
+using Models.Entities.Sldier;
 using Models.Entities.User;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,12 @@ namespace DataContext.Context
        public DbSet<Models.Entities.Blog.Blog> Blogs { get; set; }
         public DbSet<Models.Entities.Blog.BlogCategory> blogCategories { get; set; }
         public DbSet<Models.Entities.Blog.BlogSelectedCategory> blogSelectedCategories { get; set; }
+
+        #endregion
+
+        #region Slider
+
+        public DbSet<Slider> sliders { get; set; }
 
         #endregion
 
