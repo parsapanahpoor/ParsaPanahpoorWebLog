@@ -1,0 +1,128 @@
+﻿@model List<Models.Entities.AboutMe.Abilities>
+
+@{ ViewData["Title"] = "درباره ی من  ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+@section Styls
+    {
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/Admin_Panel/plugins/datatables/dataTables.bootstrap4.css">
+
+}
+
+
+<div class="content-wrapper" style="min-height: 805px;">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>جداول داده</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="/Admin">خانه</a></li>
+                        <li class="breadcrumb-item active">جداول داده</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">تخصص ها </h3>
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <a href="/Admin/AboutMe/CreateAbility" class="btn btn-block btn-success btn-sm waves-effect">افزودن تخصص    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+
+                        @foreach (var item in Model)
+                        {
+                        <p>
+                            <code>@item.AbilityName</code>
+                            <a class=" text-warning" style="cursor:pointer;" href="@Url.Action("EditAbility", new { id = item.Id })">
+                                <i class="fa fa-edit" title="ویرایش"></i>
+
+                            </a>
+                            <a class=" text-danger" style="cursor:pointer;" href="/Admin/AboutMe/EditAbility?id=@item.Id&&Delete=true">
+                                <i class="fa fa-trash" title="حذف"></i>
+
+                            </a>
+                        </p>
+
+                            <div class="progress">
+                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @item.AbilityPercent%">
+                                    <span class="sr-only">۴۰% Complete (success)</span>
+                                </div>
+                            </div> <br />
+
+                        }
+
+
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section> <!-- /.content -->
+</div>
+
+
+
+
+@section scripts{
+    <!-- ./wrapper -->
+
+    <script src="/Admin_Panel/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="/Admin_Panel/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <!-- SlimScroll -->
+    <!-- FastClick -->
+    <script src="/Admin_Panel/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <!-- AdminLTE for demo purposes -->
+    <!-- page script -->
+    <script>
+    $(function () {
+            $("#example1").DataTable({
+                "language": {
+                    "paginate": {
+                        "next": "بعدی",
+                        "previous": "قبلی"
+                    }
+                },
+                "info": false,
+            });
+            $('#example2').DataTable({
+                "language": {
+                    "paginate": {
+                        "next": "بعدی",
+                        "previous": "قبلی"
+                    }
+                },
+                "info": false,
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "autoWidth": false
+            });
+        });</script>
+}
+

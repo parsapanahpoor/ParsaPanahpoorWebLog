@@ -71,6 +71,11 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
             return GetAll().ToList();
         }
 
+        public AboutMe GetLastResume()
+        {
+            return GetAll().FirstOrDefault(); 
+        }
+
         public AboutMe GetResumeById(int id)
         {
             return GetById(id);

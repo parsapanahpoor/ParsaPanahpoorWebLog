@@ -16,6 +16,7 @@ namespace DataAccess.Design_Pattern.Repositories.Interfaces
         AboutMe GetResumeById(int id);
         void UpdateResume(AboutMe resume, IFormFile imgProductUp);
         void DeleteAboutMe(AboutMe resume);
+        AboutMe GetLastResume();
 
 
     }
