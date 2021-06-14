@@ -1,0 +1,162 @@
+﻿
+
+@model DataAccess.ViewModels.ResumeViewModel
+@{ ViewData["Title"] = "ساخت رزومه  ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+<div class="content-wrapper" style="min-height: 805px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>ساخت رزومه</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="/Admin">خانه</a></li>
+                        <li class="breadcrumb-item active">ساخت رزومه </li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <form asp-action="Create" asp-controller="AboutMe" asp-area="Admin" method="post" enctype="multipart/form-data">
+        <div style="color: darkred;" asp-validation-summary="ModelOnly"></div>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-7">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">اطلاعات رزومه   </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <div role="form" asp-action="Create" asp-controller="Users" asp-area="Admin">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> نام کاربری </label>
+                                        <input type="text" asp-for="UserName" class="form-control" id="exampleInputEmail1" placeholder="نام کاربری  را وارد کنید">
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> تخصص کاری  </label>
+                                        <input type="text" asp-for="JobAbility" class="form-control" id="exampleInputEmail1" placeholder="تخصص کاری   را وارد کنید">
+                                        <span asp-validation-for="JobAbility" class="text-danger"></span>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> شماره تلفن   </label>
+                                        <input type="text" asp-for="PhoneNumber" class="form-control" id="exampleInputEmail1" placeholder="شماره تلفن  را وارد کنید">
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">آدرس ایمیل</label>
+                                        <input type="email" asp-for="Email" class="form-control" id="exampleInputEmail1" placeholder="ایمیل را وارد کنید">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> توضیح کامل    </label>
+                                        <textarea type="text" asp-for="LongDescription" class="form-control" id="LongDescription" placeholder="شماره تلفن  را وارد کنید"></textarea>
+                                        <span asp-validation-for="LongDescription" class="text-danger"></span>
+
+                                    </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">ارسال</button>
+                                    <a asp-action="Index" asp-controller="AboutMe" asp-area="Admin" class="btn btn-primary">بازگشت  </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <!--/.col (right) -->
+                    <div class="col-md-5">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">  تصویر  </h3>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="card-body row">
+                                    <img style="margin:auto; width:342px" id="imgAvatar" class="img-responsive rounded" src="~/Images/UserAvatar/Defult.jpg" alt="upload_img">
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" asp-for="AvatarName">
+                                            <label class="custom-file-label" for="exampleInputFile">انتخاب فایل</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </form>
+
+
+</div>
+
+@section Scripts
+{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#AvatarName").change(function () {
+            readURL(this);
+
+
+        });
+    </script>
+
+
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace('LongDescription', {
+            customConfig: '/js/Config.js'
+        });
+
+    </script>
+
+
+
+}

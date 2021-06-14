@@ -51,7 +51,6 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
 
         public void DeleteSldier(Slider slider)
         {
-            Delete(slider);
 
             if (slider.SliderImageName != "no-photo.png")
             {
@@ -67,6 +66,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                     File.Delete(deletethumbPath);
                 }
             }
+            Delete(slider);
 
         }
 
