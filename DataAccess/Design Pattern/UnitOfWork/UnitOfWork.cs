@@ -17,6 +17,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
             sliderRepository = new SliderRepository(_db);
             aboutMeRepository = new AboutMeRepository(_db);
             abilitiesRepository = new AbilitiesRepository(_db);
+            BanerRepository = new BanerRepository(_db);
         }
 
 
@@ -27,6 +28,8 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         public SliderRepository sliderRepository { get; private set; }
         public AboutMeRepository aboutMeRepository { get; private set; }
         public AbilitiesRepository abilitiesRepository { get; private set; }
+        public BanerRepository BanerRepository { get; private set; }
+
 
 
         #endregion

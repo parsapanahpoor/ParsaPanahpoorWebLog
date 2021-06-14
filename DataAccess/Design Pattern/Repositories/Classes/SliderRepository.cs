@@ -15,11 +15,11 @@ using Utilities.Security;
 
 namespace DataAccess.Design_Pattern.Repositories.Classes
 {
-  public  class SliderRepository : GenericRepsotory<Slider>, ISldierRepository
+    public class SliderRepository : GenericRepsotory<Slider>, ISldierRepository
     {
         private readonly ParsaPanahpoorDbContext _db;
 
-        public SliderRepository(ParsaPanahpoorDbContext db  ) : base(db)
+        public SliderRepository(ParsaPanahpoorDbContext db) : base(db)
         {
             _db = db;
         }
@@ -45,7 +45,6 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
             }
 
             Add(slider);
-                
 
         }
 

@@ -1,0 +1,104 @@
+﻿@model Models.Entities.Sldier.Baner
+
+@{ ViewData["Title"] = "افزودن بنر  ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+
+
+
+<div class="content-wrapper" style="min-height: 805px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>افزودن اسلایدر  جدید </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="/Admin">خانه</a></li>
+                        <li class="breadcrumb-item active">افزودن بنر   جدید </li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <form asp-action="Create" asp-controller="Baner" asp-area="Admin" method="post" enctype="multipart/form-data">
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                 
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-12">
+                        <!-- Horizontal Form -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">  تصویر  </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <div class="form-horizontal">
+                                <div class="card-body row">
+                                    <img style="margin:auto; width:342px" id="imgAvatar" class="img-responsive rounded" src="~/Images/Slider/no-photo.png" alt="upload_img">
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="imgBlogUp" id="imgBlogUp">
+                                            <label class="custom-file-label" for="exampleInputFile">انتخاب فایل</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">ارسال</button>
+                                    <a asp-action="Index" asp-controller="Baner" asp-area="Admin" class="btn btn-primary">بازگشت به عقب </a>
+                                </div>
+                                <!-- /.card-body -->
+                                <!-- /.card-footer -->
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                        <!-- general form elements disabled -->
+                        <!-- /.card -->
+
+
+
+                    </div>
+
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </form>
+
+
+</div>
+
+@section Scripts
+{
+    <script>function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgBlogUp").change(function () {
+            readURL(this);
+        });</script>
+
+
+
+}
+

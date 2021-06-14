@@ -269,6 +269,22 @@ namespace DataContext.Migrations
                     b.ToTable("blogSelectedCategories");
                 });
 
+            modelBuilder.Entity("Models.Entities.Sldier.Baner", b =>
+                {
+                    b.Property<int>("BanerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BanerImageName")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("BanerId");
+
+                    b.ToTable("baners");
+                });
+
             modelBuilder.Entity("Models.Entities.Sldier.Slider", b =>
                 {
                     b.Property<int>("SliderId")

@@ -92,12 +92,8 @@ namespace Presentation.Controllers
             {
                 var user = await _userManager.FindByNameAsync(model.UserName);
 
-               
-         
-            
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
 
-                var result = await _signInManager.PasswordSignInAsync(
-                    model.UserName, model.Password, model.RememberMe, true);
 
 
 

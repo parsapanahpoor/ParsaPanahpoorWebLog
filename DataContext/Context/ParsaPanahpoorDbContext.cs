@@ -30,6 +30,7 @@ namespace DataContext.Context
         #region Slider
 
         public DbSet<Slider> sliders { get; set; }
+        public DbSet<Baner> baners { get; set; }
 
         #endregion
 

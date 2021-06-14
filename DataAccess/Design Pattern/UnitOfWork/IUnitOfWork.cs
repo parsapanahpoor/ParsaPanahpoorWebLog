@@ -15,6 +15,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         SliderRepository sliderRepository { get; }
         AboutMeRepository aboutMeRepository { get; }
         AbilitiesRepository abilitiesRepository { get; }
+        BanerRepository BanerRepository { get; }
 
 
 

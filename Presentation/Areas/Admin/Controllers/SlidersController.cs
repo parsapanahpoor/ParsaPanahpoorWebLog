@@ -52,7 +52,7 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
 
-        public IActionResult Edit(int? id , bool Delete = false)
+        public IActionResult Edit(int? id, bool Delete = false)
         {
             if (id == null)
             {
@@ -93,7 +93,7 @@ namespace Presentation.Areas.Admin.Controllers
             return View(slider);
         }
 
-        public IActionResult Delete(int id )
+        public IActionResult Delete(int id)
         {
             var slider = _context.sliderRepository.GetSliderById(id);
             _context.sliderRepository.DeleteSldier(slider);
