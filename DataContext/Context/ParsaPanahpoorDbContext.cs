@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Models.Entities;
 using Models.Entities.AboutMe;
+using Models.Entities.Projects;
 using Models.Entities.Sldier;
 using Models.Entities.User;
 using System;
@@ -11,7 +12,7 @@ using System.Text;
 
 namespace DataContext.Context
 {
-   public class ParsaPanahpoorDbContext : IdentityDbContext<User>
+    public class ParsaPanahpoorDbContext : IdentityDbContext<User>
     {
 
         public ParsaPanahpoorDbContext(DbContextOptions<ParsaPanahpoorDbContext> options)
@@ -21,7 +22,7 @@ namespace DataContext.Context
         }
 
         #region Blog
-       public DbSet<Models.Entities.Blog.Blog> Blogs { get; set; }
+        public DbSet<Models.Entities.Blog.Blog> Blogs { get; set; }
         public DbSet<Models.Entities.Blog.BlogCategory> blogCategories { get; set; }
         public DbSet<Models.Entities.Blog.BlogSelectedCategory> blogSelectedCategories { get; set; }
 
@@ -41,6 +42,12 @@ namespace DataContext.Context
 
         #endregion
 
+        #region   Projects
+
+        public DbSet<Project> projects { get; set; }
+
+        #endregion
+
         #region OnModelCreating
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,7 +64,7 @@ namespace DataContext.Context
             modelBuilder.Entity<User>()
                 .HasQueryFilter(u => !u.IsDelete);
 
-            
+
 
 
             base.OnModelCreating(modelBuilder);
