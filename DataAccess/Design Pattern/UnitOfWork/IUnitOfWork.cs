@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Design_Pattern.UnitOfWork
 {
-   public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
 
         #region Repositories
@@ -16,6 +16,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         AboutMeRepository aboutMeRepository { get; }
         AbilitiesRepository abilitiesRepository { get; }
         BanerRepository BanerRepository { get; }
+        ProjectRepository ProjectRepository { get; }
 
 
 

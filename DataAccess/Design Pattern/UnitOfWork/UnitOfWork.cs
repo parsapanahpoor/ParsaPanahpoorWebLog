@@ -18,6 +18,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
             aboutMeRepository = new AboutMeRepository(_db);
             abilitiesRepository = new AbilitiesRepository(_db);
             BanerRepository = new BanerRepository(_db);
+            ProjectRepository = new ProjectRepository(_db);
         }
 
 
@@ -29,11 +30,11 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         public AboutMeRepository aboutMeRepository { get; private set; }
         public AbilitiesRepository abilitiesRepository { get; private set; }
         public BanerRepository BanerRepository { get; private set; }
+        public ProjectRepository ProjectRepository { get; private set; }
 
 
 
         #endregion
-
 
         #region Implement
 
