@@ -1,5 +1,6 @@
 ﻿using DataAccess.Design_Pattern.UnitOfWork;
 using DataAccess.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities.AboutMe;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 namespace Presentation.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class AboutMeController : Controller
     {
         private readonly IUnitOfWork _context;
@@ -119,7 +122,7 @@ namespace Presentation.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateAbility( Abilities abilities)
+        public IActionResult CreateAbility(Abilities abilities)
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +137,7 @@ namespace Presentation.Areas.Admin.Controllers
             return View(abilities);
         }
 
-        public IActionResult EditAbility(int id , bool Delete = false)
+        public IActionResult EditAbility(int id, bool Delete = false)
         {
             var ability = _context.abilitiesRepository.GetAbilityById(id);
 
@@ -148,7 +151,7 @@ namespace Presentation.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-       public IActionResult EditAbility(Abilities abilities)
+        public IActionResult EditAbility(Abilities abilities)
         {
             if (ModelState.IsValid)
             {
@@ -170,7 +173,7 @@ namespace Presentation.Areas.Admin.Controllers
 
 
             return RedirectToAction(nameof(Abilities));
-        
+
         }
         #endregion
 

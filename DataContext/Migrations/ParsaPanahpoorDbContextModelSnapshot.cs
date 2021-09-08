@@ -280,6 +280,10 @@ namespace DataContext.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProductImageName")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<string>("ProjectTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)")

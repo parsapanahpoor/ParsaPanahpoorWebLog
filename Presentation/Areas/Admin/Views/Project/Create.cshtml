@@ -1,0 +1,142 @@
+﻿@model Models.Entities.Projects.Project
+
+@{ ViewData["Title"] = "افزودن پروژه  ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+
+
+
+<div class="content-wrapper" style="min-height: 805px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>افزودن پروژه   جدید </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="/Admin">خانه</a></li>
+                        <li class="breadcrumb-item active">افزودن پروژه    جدید </li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <form asp-action="Create" asp-controller="Project" asp-area="Admin" method="post" enctype="multipart/form-data">
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-7">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">اطلاعات پروژه     </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <div role="form" asp-action="Create" asp-controller="Users" asp-area="Admin">
+                                <div class="card-body">
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> متن پروژه       </label>
+                                        <input type="text" asp-for="ProjectTitle" class="form-control" id="exampleInputEmail1" placeholder="عنوان پروژه    را وارد کنید">
+                                        <span asp-validation-for="ProjectTitle" class="text-danger"></span>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1"> موضوع تخصص      </label>
+                                        <input type="text" asp-for="Tags" class="form-control" id="exampleInputEmail1" placeholder="موضوع تخصص     را وارد کنید">
+                                        <span asp-validation-for="Tags" class="text-danger"></span>
+
+                                    </div>     <div class="form-group">
+                                        <label for="exampleInputEmail1"> تاریخ        </label>
+                                        <input type="text" asp-for="CreateDate" class="form-control" id="exampleInputEmail1" placeholder="تاریخ     را وارد کنید">
+                                        <span asp-validation-for="CreateDate" class="text-danger"></span>
+
+                                    </div>
+
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">ارسال</button>
+                                    <a asp-action="Index" asp-controller="Project" asp-area="Admin" class="btn btn-primary">بازگشت  </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-5">
+                        <!-- Horizontal Form -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">  تصویر  </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <div class="form-horizontal">
+                                <div class="card-body row">
+                                    <img style="margin:auto; width:342px" id="imgAvatar" class="img-responsive rounded" src="~/Images/Pr/no-photo.png" alt="upload_img">
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="imgBlogUp" id="imgBlogUp">
+                                            <label class="custom-file-label" for="exampleInputFile">انتخاب فایل</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <!-- /.card-footer -->
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                        <!-- general form elements disabled -->
+                        <!-- /.card -->
+
+
+
+                    </div>
+
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+    </form>
+
+
+</div>
+
+@section Scripts
+{
+    <script>function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgBlogUp").change(function () {
+            readURL(this);
+        });</script>
+
+
+
+}
+

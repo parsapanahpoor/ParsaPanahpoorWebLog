@@ -44,15 +44,12 @@ namespace Presentation
             #endregion
 
             #region IdentityServices
-            services.AddIdentity<User, IdentityRole>(option=>
+            services.AddIdentity<User, IdentityRole>(option =>
             {
                 option.Password.RequireDigit = false;
                 option.Password.RequireLowercase = false;
                 option.Password.RequireUppercase = false;
                 option.Password.RequireNonAlphanumeric = false;
-       
-            
-            
             })
            .AddEntityFrameworkStores<ParsaPanahpoorDbContext>()
            .AddDefaultTokenProviders();

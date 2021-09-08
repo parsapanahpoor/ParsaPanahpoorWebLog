@@ -15,7 +15,7 @@ namespace ParsaPanahpoor.WebSite.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _context;
 
-        public HomeController(ILogger<HomeController> logger , IUnitOfWork context)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork context)
         {
             _logger = logger;
             _context = context;

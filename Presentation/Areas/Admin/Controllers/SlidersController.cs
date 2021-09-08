@@ -1,4 +1,5 @@
 ﻿using DataAccess.Design_Pattern.UnitOfWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities.Sldier;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 namespace Presentation.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class SlidersController : Controller
     {
         private readonly IUnitOfWork _context;

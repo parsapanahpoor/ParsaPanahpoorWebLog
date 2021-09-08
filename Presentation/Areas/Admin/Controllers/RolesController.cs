@@ -50,7 +50,7 @@ namespace Presentation.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Edit(string id , bool IsDelete = true)
+        public async Task<IActionResult> Edit(string id, bool IsDelete = true)
         {
             if (string.IsNullOrEmpty(id)) return NotFound();
             if (IsDelete == true)

@@ -29,6 +29,8 @@ namespace Models.Entities.Projects
 
         [Required]
         public string CreateDate { get; set; }
+        [MaxLength(50)]
+        public string ProductImageName { get; set; }
 
     }
 }

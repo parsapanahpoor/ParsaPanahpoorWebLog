@@ -1,5 +1,5 @@
 ﻿
-
+@model Tuple<List<Models.Entities.Projects.Project>, int>
 
 <section id="work" class="portfolio-mf sect-pt4 route">
     <div class="container">
@@ -17,156 +17,68 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="work-box">
-                    <a href="img/work-1.jpg" data-lightbox="gallery-mf">
-                        <div class="work-img">
-                            <img src="/ParsaPanahpoor_Desing/img/work-1.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="work-content">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <h2 class="w-title">لورم ایپسوم متن ساختگی</h2>
-                                    <div class="w-more">
-                                        <span class="w-ctegory">طراح سایت</span> /
-                                        <span class="w-date">1 فروردین 1398</span>
+            @*<form id="formFilter" asp-action="InvokeAsync" asp-controller="ProjectsComponent" method="get">*@
+                <input type="hidden" id="pageid" name="pageId" value="@ViewBag.pageId.ToString()" />
+                @foreach (var item in Model.Item1)
+                {
+                    <div class="col-md-4">
+                        <div class="work-box">
+                            <a href="/Images/Projects/@item.ProductImageName" data-lightbox="gallery-mf">
+                                <div class="work-img">
+                                    <img style="height:250px;" src="/Images/Projects/@item.ProductImageName" alt="" class="img-fluid">
+                                </div>
+                                <div class="work-content">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <h2 class="w-title"> @item.ProjectTitle</h2>
+                                            <div class="w-more">
+                                                <span class="w-ctegory">@item.Tags</span> /
+                                                <span class="w-date">@item.CreateDate</span>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div class="col-sm-2">
-                                    <div class="w-like">
-                                        <span class="ion-ios-plus-outline"></span>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="work-box">
-                    <a href="img/work-2.jpg" data-lightbox="gallery-mf">
-                        <div class="work-img">
-                            <img src="/ParsaPanahpoor_Desing/img/work-2.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="work-content">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <h2 class="w-title">لورم ایپسوم متن ساختگی</h2>
-                                    <div class="w-more">
-                                        <span class="w-ctegory">طراح سایت</span> /
-                                        <span class="w-date">1 فروردین 1398</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="w-like">
-                                        <span class="ion-ios-plus-outline"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="work-box">
-                    <a href="img/work-3.jpg" data-lightbox="gallery-mf">
-                        <div class="work-img">
-                            <img src="/ParsaPanahpoor_Desing/img/work-3.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="work-content">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <h2 class="w-title">لورم ایپسوم متن ساختگی</h2>
-                                    <div class="w-more">
-                                        <span class="w-ctegory">طراح سایت</span> /
-                                        <span class="w-date">1 فروردین 1398</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="w-like">
-                                        <span class="ion-ios-plus-outline"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="work-box">
-                    <a href="img/work-4.jpg" data-lightbox="gallery-mf">
-                        <div class="work-img">
-                            <img src="/ParsaPanahpoor_Desing/img/work-4.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="work-content">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <h2 class="w-title">لورم ایپسوم متن ساختگی</h2>
-                                    <div class="w-more">
-                                        <span class="w-ctegory">طراح سایت</span> /
-                                        <span class="w-date">1 فروردین 1398</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="w-like">
-                                        <span class="ion-ios-plus-outline"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="work-box">
-                    <a href="img/work-5.jpg" data-lightbox="gallery-mf">
-                        <div class="work-img">
-                            <img src="/ParsaPanahpoor_Desing/img/work-5.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="work-content">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <h2 class="w-title">لورم ایپسوم متن ساختگی</h2>
-                                    <div class="w-more">
-                                        <span class="w-ctegory">طراح سایت</span> /
-                                        <span class="w-date">1 فروردین 1398</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="w-like">
-                                        <span class="ion-ios-plus-outline"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="work-box">
-                    <a href="img/work-6.jpg" data-lightbox="gallery-mf">
-                        <div class="work-img">
-                            <img src="/ParsaPanahpoor_Desing/img/work-6.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="work-content">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <h2 class="w-title">لورم ایپسوم متن ساختگی</h2>
-                                    <div class="w-more">
-                                        <span class="w-ctegory">طراح سایت</span> /
-                                        <span class="w-date">1 فروردین 1398</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="w-like">
-                                        <span class="ion-ios-plus-outline"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+                    </div>
+
+                }
+            @*</form>*@
         </div>
+
+
+            @if (Model.Item2 > 1)
+            {
+                <nav aria-label="...">
+                    <ul class="pagination pagination-lg">
+                        @for (int i = 1; i <= (int)Model.Item2; i++)
+                        {   
+
+                            <li class="page-item "    @((ViewBag.pageId == i ?"active":""))>
+                                <a class="page-link" href="#" onclick="changePage(@i)" tabindex="-1">@i</a>
+                            </li>
+ 
+                        }
+                    </ul>
+                </nav>
+
+
+}
+
+   
     </div>
 </section>
+@section Scripts
+{
+
+    <script>
+
+        function changePage(pageid) {
+            $("#pageid").val(pageid);
+            $("#formFilter").submit();
+        }
+
+    </script>
+
+ }
