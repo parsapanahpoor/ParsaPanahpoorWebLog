@@ -82,7 +82,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
 
         public AboutMe GetLastResume()
         {
-            return GetAll().FirstOrDefault();
+            return GetAll().Single();
         }
 
         public AboutMe GetResumeById(int id)

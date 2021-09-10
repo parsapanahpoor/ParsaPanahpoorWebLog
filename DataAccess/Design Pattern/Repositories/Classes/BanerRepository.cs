@@ -72,7 +72,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
 
         public Baner GetTheLastestBaner()
         {
-            return GetAll().FirstOrDefault();
+            return GetAll().Single();
         }
 
         public void UpdateBaner(Baner baner, IFormFile imgBlogUp)
