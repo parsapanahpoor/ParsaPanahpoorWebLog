@@ -18,9 +18,7 @@ namespace ParsaPanahpoor.WebSite.ViewComponents
         {
             ViewData["Ability"] = _context.abilitiesRepository.GetAllAbilities();
 
-
-            return await Task.FromResult((IViewComponentResult)View("ResumeComponent" , _context.aboutMeRepository.GetLastResume()));
-
+            return await Task.FromResult((IViewComponentResult)View("ResumeComponent", _context.aboutMeRepository.GetLastResume()));
         }
     }
 }

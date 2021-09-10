@@ -15,13 +15,14 @@ namespace Presentation.Areas.Admin.Controllers
 
     public class SlidersController : Controller
     {
-        private readonly IUnitOfWork _context;
 
+        #region Constructor
+        private readonly IUnitOfWork _context;
         public SlidersController(IUnitOfWork context)
         {
             _context = context;
         }
-
+        #endregion
 
         public IActionResult Index(bool Create = false, bool Edit = false, bool Delete = false)
         {
@@ -33,12 +34,10 @@ namespace Presentation.Areas.Admin.Controllers
             return View(_context.sliderRepository.GetAllSliders());
         }
 
-
         public IActionResult Create()
         {
             return View();
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -53,7 +52,6 @@ namespace Presentation.Areas.Admin.Controllers
             }
             return View(slider);
         }
-
 
         public IActionResult Edit(int? id, bool Delete = false)
         {
@@ -73,7 +71,6 @@ namespace Presentation.Areas.Admin.Controllers
             }
             return View(slider);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -104,8 +101,6 @@ namespace Presentation.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-
 
     }
 }

@@ -23,7 +23,6 @@ namespace Presentation.Areas.Admin.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _context;
 
-
         public UsersController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IUnitOfWork context)
         {
             _userManager = userManager;
@@ -53,9 +52,6 @@ namespace Presentation.Areas.Admin.Controllers
                         }).ToList();
             return View(model);
         }
-
-
-
 
         public ActionResult Create()
         {
@@ -163,9 +159,6 @@ namespace Presentation.Areas.Admin.Controllers
             return View(user);
         }
 
-
-
-
         public async Task<IActionResult> Delete(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -194,7 +187,6 @@ namespace Presentation.Areas.Admin.Controllers
             var result = await _userManager.UpdateAsync(user);
             return RedirectToAction(nameof(Index));
         }
-
 
         #endregion
 

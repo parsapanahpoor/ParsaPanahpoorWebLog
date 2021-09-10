@@ -101,7 +101,6 @@ namespace Presentation.Areas.Admin.Controllers
             return RedirectToAction(nameof(Resume));
         }
 
-
         #endregion
 
         #region Abilities
@@ -163,7 +162,6 @@ namespace Presentation.Areas.Admin.Controllers
 
             return View(abilities);
         }
-
 
         public IActionResult DeleteAbility(int id)
         {

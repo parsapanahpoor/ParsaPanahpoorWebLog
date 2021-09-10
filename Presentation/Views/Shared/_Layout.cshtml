@@ -55,12 +55,7 @@
                             <a class="nav-link js-scroll" href="#">@User.Identity.Name</a>
                         </li>
                     }
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll" href="/register">وارد شوید </a>
-                        </li>
-                    }
+                 
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
@@ -100,8 +95,6 @@
     @await Component.InvokeAsync("ServicesComponent")
 
     @await Component.InvokeAsync("ProjectsComponent")
-
-    @await Component.InvokeAsync("BlogsComponent")
 
     @await Component.InvokeAsync("ContactUsComponent")
 

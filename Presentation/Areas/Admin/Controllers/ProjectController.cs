@@ -17,11 +17,15 @@ namespace Presentation.Areas.Admin.Controllers
     [Authorize]
     public class ProjectController : Controller
     {
+        #region Constructor
         private readonly IUnitOfWork _context;
         public ProjectController(IUnitOfWork context)
         {
             _context = context;
         }
+        #endregion
+
+
         public IActionResult Index()
         {
             return View(_context.ProjectRepository.GetAllProjects());

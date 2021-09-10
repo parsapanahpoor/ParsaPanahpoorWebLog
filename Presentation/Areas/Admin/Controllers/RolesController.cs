@@ -13,7 +13,6 @@ namespace Presentation.Areas.Admin.Controllers
     public class RolesController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
-
         public RolesController(RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
@@ -57,7 +56,6 @@ namespace Presentation.Areas.Admin.Controllers
             {
                 ViewData["IsDelete"] = true;
             }
-
 
             var role = await _roleManager.FindByIdAsync(id);
 

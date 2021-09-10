@@ -14,7 +14,7 @@ using Utilities.Security;
 
 namespace DataAccess.Design_Pattern.Repositories.Classes
 {
-   public class AboutMeRepository  : GenericRepository.GenericRepsotory<AboutMe> , IAboutMeRepository
+    public class AboutMeRepository : GenericRepository.GenericRepsotory<AboutMe>, IAboutMeRepository
     {
 
         private readonly ParsaPanahpoorDbContext _db;
@@ -28,7 +28,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
         {
             AboutMe about = new AboutMe()
             {
-                UserName = resume.UserName , 
+                UserName = resume.UserName,
                 PhoneNumber = resume.PhoneNumber,
                 JobAbility = resume.JobAbility,
                 Email = resume.Email,
@@ -60,7 +60,6 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                     File.Delete(deleteimagePath);
                 }
 
-              
             }
 
             Delete(resume);
@@ -73,7 +72,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
 
         public AboutMe GetLastResume()
         {
-            return GetAll().FirstOrDefault(); 
+            return GetAll().FirstOrDefault();
         }
 
         public AboutMe GetResumeById(int id)
@@ -93,8 +92,6 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                     {
                         File.Delete(deleteimagePath);
                     }
-
-
                 }
 
 

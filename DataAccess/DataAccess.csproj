@@ -16,6 +16,13 @@
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
+
+
+
+
+  <ItemGroup>
+    <Folder Include="Design Pattern\Repositories\Classes\NewFolder\" />
+  </ItemGroup>
   
   
   

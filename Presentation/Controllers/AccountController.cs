@@ -24,7 +24,6 @@ namespace Presentation.Controllers
         }
         #endregion
 
-
         #region Register
         [HttpGet]
         [Route("/Register")]
@@ -70,6 +69,7 @@ namespace Presentation.Controllers
         #endregion
 
         #region Login
+        [Route("/Login")]
         [HttpGet]
         public IActionResult Login(string returnUrl = null)
         {
@@ -79,9 +79,8 @@ namespace Presentation.Controllers
             ViewData["returnUrl"] = returnUrl;
             return View();
         }
-
+        [Route("/Login")]
         [HttpPost]
-
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             if (_signInManager.IsSignedIn(User))

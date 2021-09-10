@@ -14,18 +14,18 @@ namespace Presentation.Areas.Admin.Controllers
     [Authorize]
     public class BanerController : Controller
     {
+        #region MyRegion
         private readonly IUnitOfWork _context;
         public BanerController(IUnitOfWork context)
         {
             _context = context;
         }
+        #endregion
 
         public ActionResult Index()
         {
             return View(_context.BanerRepository.GetAllBaners());
         }
-
-
 
         public ActionResult Create()
         {
@@ -48,8 +48,6 @@ namespace Presentation.Areas.Admin.Controllers
 
         public IActionResult Edit(int? id, bool Delete = false)
         {
-
-
             var slider = _context.BanerRepository.GetBanerById((int)id);
             if (slider == null)
             {
