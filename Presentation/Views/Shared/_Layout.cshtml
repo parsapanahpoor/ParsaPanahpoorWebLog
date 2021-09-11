@@ -53,7 +53,7 @@
                             <a class="nav-link js-scroll" href="#">@User.Identity.Name</a>
                         </li>
                     }
-                 
+
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
@@ -84,17 +84,24 @@
         </div>
     </nav>
 
-    @await Component.InvokeAsync("BanerPictureComponent")
 
-    @await Component.InvokeAsync("ResumeComponent")
+    <cache expires-after="@TimeSpan.FromDays(1)">
+        @await Component.InvokeAsync("BanerPictureComponent")
+    </cache>
+
+    <cache expires-after="@TimeSpan.FromDays(1)">
+        @await Component.InvokeAsync("ResumeComponent")
+    </cache>
 
     @await Component.InvokeAsync("ServicesComponent")
 
-    @await Component.InvokeAsync("ProjectsComponent")
+    <cache expires-after="@TimeSpan.FromHours(8)">
+        @await Component.InvokeAsync("ProjectsComponent")
+    </cache>
 
-    @await Component.InvokeAsync("ContactUsComponent")
-
-
+    <cache expires-after="@TimeSpan.FromDays(1)">
+        @await Component.InvokeAsync("ContactUsComponent")
+    </cache>
 
 
 

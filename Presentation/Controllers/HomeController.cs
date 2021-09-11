@@ -26,13 +26,12 @@ namespace ParsaPanahpoor.WebSite.Controllers
         //Welcome Page
         public IActionResult Index()
         {
-            var sliders = _context.sliderRepository.GetSldierForShow();
-            return View(sliders);
+            return View();
         }
 
 
         [Route("/Home")]
-        public IActionResult Home()
+        public IActionResult Home(bool MessageSend = false)
         {
             return View();
         }

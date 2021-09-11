@@ -1,5 +1,5 @@
 ﻿
-
+@model Models.Entities.ContactUs.ContactUs
 
 <section class="paralax-mf footer-paralax bg-image sect-mt4 route" >
     <div class="overlay-mf"></div>
@@ -16,40 +16,36 @@
                                     </h5>
                                 </div>
                                 <div>
-                                    <form action="" method="post" role="form" class="contactForm">
-                                        <div id="sendmessage">
-                                            پیام شما با موفقیت ارسال شد
-                                        </div>
+                                    <form asp-action="ContactUs" asp-controller="ContactUs" method="post" role="form" class="contactForm">
                                         <div id="errormessage"></div>
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
                                                 <div class="form-group">
-                                                    <input type="text" name="name" class="form-control" id="name" placeholder="نام شما" data-rule="minlen:4" data-msg="لطفا بیشتر از 4 کاراکتر وارد کنید">
+                                                    <input type="text" name="UserName" class="form-control" id="name" placeholder="نام شما" data-rule="minlen:4" data-msg="لطفا بیشتر از 4 کاراکتر وارد کنید">
                                                     <div class="validation"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 mb-3">
                                                 <div class="form-group">
-                                                    <input type="email" class="form-control" name="email" id="email" placeholder="ایمیل شما" data-rule="email" data-msg="لطفا ایمیل معتبر وارد کنید">
+                                                    <input type="text" class="form-control" name="Email" id="subject" placeholder=" ایمیل ">
                                                     <div class="validation"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 mb-3">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="شماره موبایل "  >
+                                                    <input type="text" class="form-control" name="PhoneNumber" id="subject" placeholder="شماره موبایل ">
                                                     <div class="validation"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 mb-3">
                                                 <div class="form-group">
-                                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="پیام خود را برا ی ما بنویسید" placeholder="پیام"></textarea>
+                                                    <textarea class="form-control" name="MessageContent" rows="5" data-rule="required" data-msg="پیام خود را برا ی ما بنویسید" placeholder="پیام"></textarea>
                                                     <div class="validation"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                <button type="submit" class="button button-a button-big button-rouded">
-                                                    ارسال
-                                                </button>
+                                                <input type="submit" class="button button-a button-big button-rouded" value="ارسال" />
+
                                             </div>
                                         </div>
                                     </form>

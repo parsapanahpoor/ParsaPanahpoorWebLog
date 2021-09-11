@@ -17,6 +17,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         AbilitiesRepository abilitiesRepository { get; }
         BanerRepository BanerRepository { get; }
         ProjectRepository ProjectRepository { get; }
+        ContactUsRepository contactUsRepository { get; }
 
 
 

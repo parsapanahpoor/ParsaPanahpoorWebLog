@@ -19,6 +19,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
             abilitiesRepository = new AbilitiesRepository(_db);
             BanerRepository = new BanerRepository(_db);
             ProjectRepository = new ProjectRepository(_db);
+            contactUsRepository = new ContactUsRepository(_db);
         }
 
 
@@ -31,6 +32,7 @@ namespace DataAccess.Design_Pattern.UnitOfWork
         public AbilitiesRepository abilitiesRepository { get; private set; }
         public BanerRepository BanerRepository { get; private set; }
         public ProjectRepository ProjectRepository { get; private set; }
+        public ContactUsRepository contactUsRepository { get; private set; }
 
 
 
