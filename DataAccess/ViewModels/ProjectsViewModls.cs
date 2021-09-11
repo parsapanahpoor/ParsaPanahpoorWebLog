@@ -16,10 +16,12 @@ namespace DataAccess.ViewModels
         [MaxLength(600)]
         public string Tags { get; set; }
 
-
         [Required]
         public string CreateDate { get; set; }
         [MaxLength(50)]
         public string ProductImageName { get; set; }
+
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string LongDescription { get; set; }
     }
 }

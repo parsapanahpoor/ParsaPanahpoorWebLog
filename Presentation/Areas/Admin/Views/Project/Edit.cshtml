@@ -54,7 +54,16 @@
                                         <input type="text" asp-for="Tags" class="form-control" id="exampleInputEmail1" placeholder="موضوع تخصص     را وارد کنید">
                                         <span asp-validation-for="Tags" class="text-danger"></span>
 
-                                    </div>     <div class="form-group">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">  توضیح کامل       </label>
+                                        <textarea asp-for="LongDescription" class="form-control" id="LongDescription"></textarea>
+                                        <span asp-validation-for="LongDescription" class="text-danger"></span>
+
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1"> تاریخ        </label>
                                         <input type="text" asp-for="CreateDate" class="form-control" id="exampleInputEmail1" placeholder="تاریخ     را وارد کنید">
                                         <span asp-validation-for="CreateDate" class="text-danger"></span>
@@ -146,6 +155,13 @@
             readURL(this);
         });</script>
 
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script>
 
+        CKEDITOR.replace('LongDescription', {
+            customConfig: '/js/Config.js'
+        });
+
+    </script>
 
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Design_Pattern.GenericRepository
 {
-   public interface IGenericRepository<TEntity> where TEntity : class
+    public interface IGenericRepository<TEntity> where TEntity : class
     {
 
 
@@ -26,10 +26,10 @@ namespace DataAccess.Design_Pattern.GenericRepository
                   ); TEntity Get(Expression<Func<TEntity, bool>> where);
 
 
-
         TEntity GetFirstOrDefault(
                Expression<Func<TEntity, bool>> filter = null,
                string includeProperties = null
                );
+        TEntity GetSingleOrDefualt();
     }
 }

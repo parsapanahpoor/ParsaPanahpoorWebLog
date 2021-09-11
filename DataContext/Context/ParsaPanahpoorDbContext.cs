@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Models.Entities;
 using Models.Entities.AboutMe;
+using Models.Entities.ContactUs;
 using Models.Entities.Projects;
 using Models.Entities.Sldier;
 using Models.Entities.User;
@@ -45,6 +46,12 @@ namespace DataContext.Context
         #region   Projects
 
         public DbSet<Project> projects { get; set; }
+
+        #endregion
+
+        #region ContantUs
+
+        public DbSet<ContactUs> ContactUs { get; set; }
 
         #endregion
 

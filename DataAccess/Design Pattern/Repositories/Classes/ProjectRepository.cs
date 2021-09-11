@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Utilities.Convertors;
 using Utilities.Genarator;
 using Utilities.Security;
 
@@ -36,7 +37,10 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                     imgBlogUp.CopyTo(stream);
                 }
 
+                ImageConvertor imgResizer = new ImageConvertor();
+                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Projects/thumb", project.ProductImageName);
 
+                imgResizer.Image_resize(imagePath, thumbPath, 600);
             }
 
             Project pro = new Project()
@@ -44,11 +48,9 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                 ProductImageName = project.ProductImageName,
                 ProjectTitle = project.ProjectTitle,
                 Tags = project.Tags,
-                CreateDate = project.CreateDate
-
-
+                CreateDate = project.CreateDate,
+                LongDescription = project.LongDescription
             };
-
 
             Add(pro);
         }
@@ -63,6 +65,11 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                     File.Delete(deleteimagePath);
                 }
 
+                string deletethumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Projects/thumb", project.ProductImageName);
+                if (File.Exists(deletethumbPath))
+                {
+                    File.Delete(deletethumbPath);
+                }
             }
 
             Delete(project);
@@ -80,7 +87,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
 
         public Tuple<List<Project>, int> GetProjectsForShowInLandingPage(int pageid, int take = 0)
         {
-            if (take == 0) take = 4;
+            if (take == 0) take = 8;
 
             var projects = GetAll();
 
@@ -103,7 +110,6 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
         {
             if (imgBlogUp != null && imgBlogUp.IsImage())
             {
-
                 if (project.ProductImageName != "no-photo.png")
                 {
                     string deleteimagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Projects", project.ProductImageName);
@@ -112,9 +118,12 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                         File.Delete(deleteimagePath);
                     }
 
+                    string deletethumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Projects/thumb", project.ProductImageName);
+                    if (File.Exists(deletethumbPath))
+                    {
+                        File.Delete(deletethumbPath);
+                    }
                 }
-
-
 
                 project.ProductImageName = NameGenerator.GenerateUniqCode() + Path.GetExtension(imgBlogUp.FileName);
                 string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Projects", project.ProductImageName);
@@ -123,6 +132,10 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
                 {
                     imgBlogUp.CopyTo(stream);
                 }
+
+                ImageConvertor imgResizer = new ImageConvertor();
+                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Projects/thumb", project.ProductImageName);
+                imgResizer.Image_resize(imagePath, thumbPath, 600);
 
             }
 

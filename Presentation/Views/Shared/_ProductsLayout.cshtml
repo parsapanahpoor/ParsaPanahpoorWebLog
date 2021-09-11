@@ -1,0 +1,113 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
+    <meta name="author" content="ParsaPanahpoor" />
+    <meta name="email" content="Parsapanahpoor@yahoo.com" />
+    <meta name="website" content="Parsapanahpoor@yahoo.com" />
+    <meta name="Version" content="v3.0.0" />
+    <!-- favicon -->
+    <!-- Bootstrap -->
+    <link href="/ProjectsDesign/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="/ProjectsDesign/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <!-- Slider -->
+    <link rel="stylesheet" href="css/tiny-slider.css" />
+    <!-- Main Css -->
+    <link href="/ProjectsDesign/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="/ProjectsDesign/css/colors/default.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <!-- Navbar STart -->
+    <header id="topnav" class="defaultscroll sticky">
+        <div class="container">
+            <!-- Logo container-->
+            <div>
+                <a class="logo" href="index.html">
+                    <img src="/ProjectsDesign/images/logo-dark.png" class="l-dark" height="24" alt="">
+                    <img src="/ProjectsDesign/images/logo-light.png" class="l-light" height="24" alt="">
+                </a>
+            </div>
+
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu  nav-light">
+                    <li><a href="/Home" style="color:white">صفحه اصلی </a></li>
+
+                </ul><!--end navigation menu-->
+
+            </div><!--end navigation-->
+        </div><!--end container-->
+    </header><!--end header-->
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+
+    @RenderBody()
+    <!-- Hero End -->
+    <!-- Footer Start -->
+
+    <footer class="footer footer-bar">
+        <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="text-sm-start">
+                        <p class="mb-0">
+                            ©
+                            <script>document.write(new Date().getFullYear())</script>  پیاده سازی شده   <i class="mdi mdi-heart text-danger"></i> توسط  <a href="https://www.rtl-theme.com/author/tn_plugin/" target="_blank" class="text-reset"> پارسا پناهپور  </a>.
+                        </p>
+                    </div>
+                </div><!--end col-->
+
+            </div><!--end row-->
+        </div><!--end container-->
+    </footer><!--end footer-->
+    <!-- Footer End -->
+    <!-- Back to top -->
+    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
+    <!-- Back to top -->
+    <!-- Style switcher --> <div id="style-switcher" class="bg-light border p-3 pt-2 pb-2" onclick="toggleSwitcher()">
+
+    </div>
+    <!-- end Style switcher -->
+    <!-- javascript -->
+    <script src="/ProjectsDesign/js/bootstrap.bundle.min.js"></script>
+    <!-- SLIDER -->
+    <script src="/ProjectsDesign/js/tiny-slider.js"></script>
+    <!-- Icons -->
+    <script src="/ProjectsDesign/js/feather.min.js"></script>
+    <!-- Switcher -->
+    <script src="/ProjectsDesign/js/switcher.js"></script>
+    <!-- Main Js -->
+    <script src="/ProjectsDesign/js/plugins.init.js"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+    <script src="/ProjectsDesign/js/app.js"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+</body>
+
+</html>
+
+

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Models.Entities.User
 {
-  public   class User : IdentityUser
+    public class User : IdentityUser
     {
 
         [Display(Name = "وضعیت")]

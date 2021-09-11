@@ -118,6 +118,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
 
                 ImageConvertor imgResizer = new ImageConvertor();
                 string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/UserAvatar/Thumb", resume.AvatarName);
+                imgResizer.Image_resize(imagePath, thumbPath, 150);
 
             }
 

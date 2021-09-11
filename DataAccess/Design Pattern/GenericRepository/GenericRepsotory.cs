@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DataAccess.Design_Pattern.GenericRepository
 {
-  public class GenericRepsotory<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepsotory<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         protected readonly ParsaPanahpoorDbContext context;
         internal DbSet<TEntity> dbSet;
@@ -110,6 +110,11 @@ namespace DataAccess.Design_Pattern.GenericRepository
         public TEntity Get(Expression<Func<TEntity, bool>> where)
         {
             return dbSet.FirstOrDefault(where);
+        }
+
+        public TEntity GetSingleOrDefualt()
+        {
+            return dbSet.SingleOrDefault();
         }
     }
 }

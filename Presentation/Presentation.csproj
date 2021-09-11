@@ -29,15 +29,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\Config.js" />
     <None Include="wwwroot\ParsaPanahpoor_Desing\.idea\DevFolio.iml" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="wwwroot\Images\Projects\" />
     <Folder Include="wwwroot\Images\Slider\Thumb\" />
     <Folder Include="wwwroot\Images\UserAvatar\Thumb\" />
+    <Folder Include="wwwroot\MyImages\" />
   </ItemGroup>
   
   

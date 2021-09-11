@@ -1355,4 +1355,17 @@ label {
   animation-delay: 3s;
 }
 
+
+#bgvid {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+#SliderText {
+    font-family: Aban;
+}
+
+
 /*# sourceMappingURL=style.css.map */

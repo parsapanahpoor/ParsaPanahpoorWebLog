@@ -7,14 +7,10 @@ namespace Models.Entities.Projects
 {
     public class Project
     {
-
         public Project()
         {
 
         }
-
-
-
         [Key]
         public int Id { get; set; }
 
@@ -26,11 +22,14 @@ namespace Models.Entities.Projects
         [MaxLength(600)]
         public string Tags { get; set; }
 
-
-        [Required]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string CreateDate { get; set; }
+
         [MaxLength(50)]
         public string ProductImageName { get; set; }
+
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string LongDescription { get; set; }
 
     }
 }

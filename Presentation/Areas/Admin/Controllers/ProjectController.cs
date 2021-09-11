@@ -25,17 +25,15 @@ namespace Presentation.Areas.Admin.Controllers
         }
         #endregion
 
-
         public IActionResult Index()
         {
             return View(_context.ProjectRepository.GetAllProjects());
         }
+
         public IActionResult Create()
         {
             return View();
         }
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(ProjectsViewModls project, IFormFile imgBlogUp)
@@ -49,6 +47,7 @@ namespace Presentation.Areas.Admin.Controllers
             }
             return View(project);
         }
+
         public IActionResult Edit(int? id, bool Delete = false)
         {
             if (id == null)
@@ -67,17 +66,12 @@ namespace Presentation.Areas.Admin.Controllers
             }
             return View(slider);
         }
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Project project, IFormFile imgBlogUp)
         {
-
             if (ModelState.IsValid)
             {
-
-
                 _context.ProjectRepository.UpdateProject(project, imgBlogUp);
                 _context.SaveChangesDB();
 

@@ -76,7 +76,7 @@ namespace DataAccess.Design_Pattern.Repositories.Classes
 
         public Slider GetSldierForShow()
         {
-            return GetFirstOrDefault();
+            return GetSingleOrDefualt();
         }
 
         public Slider GetSliderById(int id)
